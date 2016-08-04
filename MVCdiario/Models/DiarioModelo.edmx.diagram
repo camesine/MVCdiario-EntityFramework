@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b3bd4b2ba2d406d9d23a97c2abd7e04" Name="Diagrama1" ZoomLevel="81">
+        <EntityTypeShape EntityType="diarioModel.articulos" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="diarioModel.categorias" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="diarioModel.imagenes" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="diarioModel.noticias" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="diarioModel.ubicaciones" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="diarioModel.usuarios" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="diarioModel.FK_articulos_ubicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="diarioModel.FK_articulos_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="diarioModel.FK_noticias_categorias" ManuallyRouted="false" />
+        <AssociationConnector Association="diarioModel.FK_imagenes_noticia" ManuallyRouted="false" />
+        <AssociationConnector Association="diarioModel.FK_noticias_usuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

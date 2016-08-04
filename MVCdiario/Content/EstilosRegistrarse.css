@@ -1,0 +1,73 @@
+#ArtRegistrarse{
+     border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    height: auto;
+    width: 68%;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.00);
+    
+}
+
+#FormRegistrarse{
+    margin-top: 40px;
+    height: 460px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #dedcdc;
+    padding-left: 20px;
+    padding-top: 20px;
+    border-radius: 3px;
+    background-color: #dedcdc;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    
+}
+.LblForm{
+    height: 50px;
+    font-size: 35px;
+    font-family: 'Agency FB';
+    width: 220px;
+    color: #2d1d00;  
+}
+.TxtForm{
+
+border-radius: 3px;
+border: 1px solid #bbb;
+height: 40px;
+width: 250px;
+color: #ccc;
+
+box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+text-indent: 10px;
+
+background-position: 10px 6px;
+}
+.TxtForm:focus {
+outline: none;
+color: #666666;
+border: 1px solid #77BACE;
+box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
+}
+
+#BtnRegistrar{
+   
+   padding: 5px; 
+   float: left; 
+   background-color: #2d1d00;  
+   margin: 0px;
+   width: 483px; 
+   height: 40px;
+   text-align: center; 
+   box-shadow: #432c01 0px 10px 30px 5px inset; 
+   cursor: pointer; 
+   font-size: 25px;
+   font-family: 'Agency FB'; 
+    color: #fff; 
+    border: 1px solid  #432c01;
+}
+
+#BtnRegistrar:hover{
+     box-shadow: #513500 0px 10px 30px 5px inset;
+     text-shadow: 0px 0px 20px #fff;
+}

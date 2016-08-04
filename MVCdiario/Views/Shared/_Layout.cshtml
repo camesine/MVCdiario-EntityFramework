@@ -1,0 +1,195 @@
+﻿@{
+    MVCdiario.Models.BDdiario db = new MVCdiario.Models.BDdiario();
+    var categorias = db.categorias.ToList();
+    var articulos = db.articulos.ToList();
+    string titulo = null;
+    string subtitulo = null;
+    foreach(var fila in articulos){
+    if(fila.ubicaciones.nombre.Equals("Header")){
+        titulo = fila.titulo;
+        subtitulo = fila.contenido;
+    }
+    }
+
+    }
+
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>DIARIO</title>
+        
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link rel="stylesheet" href="~/Content/Estilos.css">
+         <link rel="stylesheet" href="~/Content/EstilosNoticias.css">
+        <link rel="stylesheet" href="~/Content/EstilosNosotros.css">
+        <link rel="stylesheet" href="~/Content/EstilosAcceder.css">
+
+        <script type="text/javascript" src="~/Scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/jssor.core.js"></script>
+        <script type="text/javascript" src="~/Scripts/jssor.utils.js"></script>
+        <script type="text/javascript" src="~/Scripts/jssor.slider.js"></script>
+
+        <script type="text/javascript">
+
+            jQuery(document).ready(function ($) {
+                var options = {
+                    $SlideDuration: 200,
+                    $AutoPlay: true,
+                    $AutoPlayInterval: 6000,
+                    $DragOrientation: 3,
+                    $ArrowNavigatorOptions: {
+                        $Class: $JssorArrowNavigator$,
+                        $ChanceToShow: 2,
+                        $AutoCenter: 0,
+                        $Steps: 1
+                    }
+                };
+
+                var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+            });
+    </script>
+    
+    </head>
+    <body>
+        <header>
+    <table style="margin-left: auto;margin-right: auto">
+    <tr>
+    <td>
+    <img src="~/Imagenes/Logo.png" id="icono" >
+    </td>
+        <td >
+        <h1 id="titulo" style="margin-left: 30px;">@titulo</h1>
+            <h5 id="subtitulo" style="margin-left: 30px;">@subtitulo</h5>
+        </td>
+    </tr>
+        
+    </table>
+</header>
+        <nav id="NavBar">
+<ul >
+        <li>@Html.ActionLink("LO MAS RECIENTE","Reciente","Noticias") </li>
+         <li>@Html.ActionLink("NOSOTROS","Nosotros","Noticias") </li>
+        <li>@Html.ActionLink("ACCESO ADMINISTRADOR","Acceder","Noticias") </li>
+     
+</ul>	
+</nav>
+        <div id="contenedor">
+            <section>
+            <article id="Galeria">
+ <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 992px;
+        height: 225px; ">
+
+        
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 992px; height: 250px;
+            overflow: hidden;">
+            
+			<div><img u="image" src="~/Imagenes/economia.jpg" /></div>
+			<div><img u="image" src="~/Imagenes/politica.jpg" /></div>
+			<div><img u="image" src="~/Imagenes/deportes.jpg" /></div>
+            <div><img u="image" src="~/Imagenes/policial.jpg" /></div>
+            
+        </div>
+
+        <style>
+            .jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
+            {
+            	position: absolute;
+            	cursor: pointer;
+            	display: block;
+                background: url(/Imagenes/a02.png) no-repeat;
+                overflow:hidden;
+            }
+            .jssora03l { background-position: -3px -33px; }
+            .jssora03r { background-position: -63px -33px; }
+            .jssora03l:hover { background-position: -123px -33px; }
+            .jssora03r:hover { background-position: -183px -33px; }
+            .jssora03ldn { background-position: -243px -33px; }
+            .jssora03rdn { background-position: -303px -33px; }
+        </style>
+        
+        <span u="arrowleft" class="jssora03l" style="width: 55px; height: 55px; top: 100px; left: 8px;">
+        </span>
+        
+        <span u="arrowright" class="jssora03r" style="width: 55px; height: 55px; top: 100px; right: 8px">
+        </span>
+        
+        
+    </div>
+</article>
+            
+                <aside class="art2" id="Deportes">
+    <div id="Menu">CATEGORIAS</div>
+<nav id="NavAside">
+<ul>
+    
+
+    @foreach(var c in categorias){
+         <li>
+             @Html.ActionLink(c.nombre, "NoticiaCategoria", "Noticias", new { id = @c.id_categoria },null)
+</li>
+    }
+</ul>
+</nav>
+</aside>
+
+            <article class="art2" id="Noticias">
+            
+                 
+               @RenderBody()
+               
+
+               
+            </article>
+            
+            <div style="clear: both" ></div>
+            </section>
+         </div>
+        
+        @{
+            string mes = "";
+            switch (@DateTime.Now.Month)
+            {
+                case 1: { mes = "Enero"; break; }
+                case 2: { mes = "Febrero"; break; }
+                case 3: { mes = "Marzo"; break; }
+                case 4: { mes = "Abril"; break; }
+                case 5: { mes = "Mayo"; break; }
+                case 6: { mes = "Junio"; break; }
+                case 7: { mes = "Julio"; break; }
+                case 8: { mes = "Agosto"; break; }
+                case 9: { mes = "Septiembre"; break; }
+                case 10: { mes = "Octubre"; break; }
+                case 11: { mes = "Noviembre"; break; }
+                case 12: { mes = "Diciembre"; break; }
+                default: { mes = "mes"; break; }
+            }  
+}
+    
+<footer>
+    <div class="footer" id="logo">
+    <img src="~/Imagenes/Logo.png" style="height: 100px;margin-top: 20px">
+    </div>
+    <div class="footer" id="titulo">
+    <h2>@titulo</h2>
+    <p id="subtitulo">(c) Taller de Programación IV  | Chillán, @DateTime.Now.Day de @mes de @DateTime.Now.Year</p> 
+
+    </div>
+    <div class="footer" id="menu">
+        <ul>
+        <li>
+        @Html.ActionLink("LO MAS RECIENTE", "Reciente", "Noticias")
+        </li>
+         @foreach(var c in categorias){
+         <li>
+             @Html.ActionLink(c.nombre, "NoticiaCategoria", "Noticias", new { id = @c.id_categoria },null)
+</li>
+         }
+        </ul>
+    </div>
+</footer>
+    </body>
+</html>

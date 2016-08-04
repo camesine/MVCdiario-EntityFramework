@@ -1,0 +1,35 @@
+﻿@model MVCdiario.Models.ubicaciones
+@{
+   
+    ViewBag.Title = "EditarUbicacion";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+@using (Html.BeginForm()){
+
+		<article class="module width_full">
+
+			<div class="FormHead"><center><h3>EDITAR UBICACION</h3></center></div>
+				<div class="module_content">
+
+         <input type="hidden" name="id_ubicacion" value="@Model.id_ubicacion" />
+
+						<fieldset>
+							<label>Nombre</label>
+							<input type="text" name="nombre" value="@Model.nombre" required>
+						</fieldset>
+                        
+                        
+						<div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					
+					<input type="submit" value="Aceptar" class="alt_btn">
+					<a href="Ubicaciones"><input type="button" value="Cancelar"></a>
+                   
+				</div>
+                
+			</footer>
+
+		</article>
+}

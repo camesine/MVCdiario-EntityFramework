@@ -1,0 +1,342 @@
+body{
+    background-color: rgb(0, 20, 31);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-bottom: 0px;
+}
+
+
+#contenedor{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    width: 996px;
+    height: auto;
+}
+
+header{
+    padding-top: 10px;
+    width: 100%;
+    height: 130px;
+    background-color: #B5E51D;
+    margin-bottom: 0px;
+    text-align: center;
+    box-shadow: #5e760d 0px 10px 30px 5px inset;
+}
+
+
+#icono{
+    height: 115px;
+}
+
+
+#titulo{
+    margin-bottom: 0px;
+    font-family: Agency FB; 
+    font-size: 40px; 
+    text-align: center;
+    color: #637e0f;
+}
+
+#subtitulo{
+    margin-top: 0px;
+    text-align: center;
+    color: #637e0f;
+}
+
+
+
+
+
+/*BARRA DE NAVEGACION*/
+#NavBar{
+    padding: 0px;
+    background-color: rgb(0, 20, 31);
+    width: 100%;
+    height: 33px;
+    
+}
+
+#NavBar ul{
+     margin: 0px;
+     padding: 0px;
+     width: 100%; 
+     list-style-type: none;  
+} 
+
+#NavBar ul li{ 
+   padding: 5px; 
+   float: left; 
+   background-color: #2d1d00;  
+   margin: 0px;
+   width: 32.3%; 
+   height: 100%;
+   text-align: center; 
+   font-size: 18px;
+   font-family: 'Agency FB';
+   box-shadow: #432c01 0px 10px 30px 5px inset; 
+} 
+
+
+#NavBar ul li a{ 
+    color: #fff;
+    text-decoration: none; 
+} 
+
+
+#NavBar ul li:hover  {
+    box-shadow: #513500 0px 10px 30px 5px inset;
+}
+
+#NavBar ul li a:hover{ 
+    text-shadow: 0px 0px 2px #fff;
+} 
+
+
+
+
+
+
+/*Info pagina*/
+
+
+
+
+section{
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.00);
+    margin-bottom: 0px;
+}
+
+
+
+
+
+/*IMG jquery*/
+
+
+
+#Galeria{
+    margin-left: 3px;
+    width: 992px;
+    margin-top: 10px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.00);
+    height: 250px;
+    
+}
+
+.art2{
+    float: left;    
+}
+
+
+
+
+
+/*aside*/
+
+#Menu{
+    margin-top: 10px;
+    border-radius: 3px;
+    font-family: 'Agency FB';
+    font-size: 40px;
+    text-align: center;
+    padding-top: 8px;
+    color: #364407; 
+    width: 100%;
+    height: 50px;
+    background-color: #B5E51D;
+    margin-bottom: 10px;
+    box-shadow: #5e760d 0px 10px 30px 5px inset;
+}
+
+#Deportes{
+    margin-left: 5px;
+    margin-right: 10px;
+    background-color: rgba(181, 229, 29, 0.00);
+    width: 20%;
+    height: 500px;
+    margin-bottom: 0px;
+}
+
+#NavAside{
+    padding-top: 0px;
+    background-color: rgba(0, 0, 0, 0.00);
+    width: 100%;
+}
+    
+#NavAside ul{
+     margin: 0px;
+     padding: 0px;
+     width: 100%;
+     list-style-type: none;  
+}
+
+#NavAside ul li{ 
+    border-radius: 3px;
+   border-bottom: 1px solid rgb(0, 20, 31);
+   padding-top: 5px;
+   background-color: #2d1d00;  
+   width: 100%; 
+   height: 36px;
+   text-decoration: none;
+   text-align: left;
+   box-shadow: #432c01 0px 10px 30px 5px inset;
+}
+
+#NavAside ul li a{ 
+    margin-left: 15px;
+    font-size: 25px;
+   font-family: 'Agency FB'; 
+    color: #fff;
+   text-decoration: none;
+}
+
+
+
+#NavAside ul li:hover  {
+  
+   box-shadow: #513500 0px 10px 30px 5px inset;
+}
+
+#NavAside ul li a:hover  {
+  text-shadow: 0px 0px 20px #fff;
+}
+
+/*CONTENIDO DE SECCIONES*/
+
+#Noticias{
+    margin-top: 10px;
+    height: auto;
+    width: 78%;
+    margin-bottom: 10px;
+    background-color: rgba(235, 235, 235, 0.00);
+}
+
+#TituloReciente{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #B5E51D;
+    width: 100%;
+    height: 50px;
+    font-family: 'Agency FB';
+    font-size: 40px;
+    text-align: center;
+    padding-top: 8px;
+    color: #364407; 
+    box-shadow: #5e760d 0px 10px 30px 5px inset;
+    
+}
+#Noticia {
+    padding: 20px 20px 20px 20px;
+    width: 737px;
+    height: 200px;
+    background-color: #dedcdc;
+    border-bottom: 1px solid rgb(0, 20, 31);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+
+.div2{
+    float: left;
+}
+
+#Imagen{
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.00);
+}
+#Imagen img {
+height: 200px;
+width: 200px;
+}
+
+#Info{
+    margin-left: 20px;
+    background-color: rgba(0, 0, 0, 0.00);
+    width: 517px;
+    height: 200px;
+    
+}
+
+#TitularNoticia{
+    font-family: 'Agency FB';
+    color: #2d1d00;
+    text-decoration: none;
+    text-align: justify;
+    margin: auto;
+}
+
+#TitularNoticia:hover {
+   text-decoration: underline;
+}
+
+#ParrafoNoticia{
+    
+    color: #000;
+    text-align: justify;
+    font-family: 'Agency FB';
+}
+
+
+
+
+
+/*PIE DE PAGINA*/
+
+footer{
+    margin-top: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+    font-family: 'Agency FB';
+    text-align: center;
+    background-color: rgb(0, 8, 13);
+    width: 100%;
+    height: 165px;   
+}   
+
+.footer{
+    float: left;
+}
+
+footer #logo {
+    width: 20%;
+    height: 100%;
+}
+footer #titulo {
+    color : rgb(0, 79, 123);
+    font-size:  25px;
+    width: 50%;
+    height: 100%;
+}
+footer #subtitulo{
+    font-family: 'Agency FB';
+    font-size: 15px;
+    color: rgb(252, 114, 54);
+}
+footer #menu{
+    width: 30%;
+    height: 100%;
+}
+
+footer #menu li {
+    text-align: left;
+    list-style-type: none;  
+   font-size: 18px;
+   font-family: 'Agency FB'; 
+} 
+footer #menu ul li a {
+    color: #ffffff;
+    text-decoration: none;  
+} 
+footer #menu ul li a:hover {
+    text-decoration: underline;
+} 

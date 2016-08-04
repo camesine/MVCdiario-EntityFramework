@@ -1,0 +1,128 @@
+﻿@model IEnumerable<MVCdiario.Models.ubicaciones>
+
+@{
+
+    
+    ViewBag.Title = "Ubicaciones";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+	
+        oTable = $('#example').dataTable({
+            "bJQueryUI": true,
+            "bFilter": true,
+            "sPaginationType": "full_numbers",
+            "sDom": '<"H"Tfr>t<"F"ip>',
+            "sScrollX": 1000,
+            "sScrollXInner": "100%",
+            "bScrollCollapse": true,
+            "oLanguage": {
+					        
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+					        
+            },
+			 
+            "aoColumnDefs": [
+                { "bSortable": false, "aTargets": [ 1 ] }
+            ],
+            "aaSorting": [[ 0, 'asc' ]]
+        });
+	
+	
+        $("#example tbody tr").each(function(index, element) {
+            $(this).find("td").eq(1).attr("align","center");
+        });
+	
+	
+        $('#example').dataTable();
+        $('#fld1').attr("align","right")
+	
+      
+    } );
+
+function Eliminar(id) {
+        $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height:170,
+            modal: true,
+            buttons: {
+                "Eliminar": function() {
+                    $(location).attr("href","EliminarUbicacion?id="+id);
+                },
+                "Cancelar": function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    }
+</script>
+
+
+
+<article class="module width_full">
+			<div class="FormHead"><center><h3>UBICACIONES</h3></center></div>
+          
+			<div class="module_content">
+              <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                
+                <th>Nombre</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Nombre</th>
+                <th>Opciones</th>
+            
+            </tr>
+        </tfoot>
+ 
+        <tbody>
+            @foreach(var campo in Model){
+            <tr>
+                 <td>@campo.nombre</td>
+                <td>
+                   <a href="EditarUbicacion?id=@campo.id_ubicacion"> <input type="image" src="~/images/icn_edit.png" title="Edit"></a>
+&nbsp;&nbsp;<input type="image" src="~/images/icn_trash.png" title="Trash" onclick="Eliminar('@campo.id_ubicacion')" > </td>
+                
+            </tr>
+            }
+         </tbody>
+    </table>
+    <fieldset style="padding:10px" id="fld1">
+    
+  <a href="NuevaUbicacion" ><input type="button" class="ui-button" id="BtnNuevo" value="Nueva Ubicacion" /></a>  
+    
+    </fieldset>
+			  <div class="clear"></div>
+  </div>
+</article>
+<div id="dialog-confirm" title="Eliminar Ubicacion" style="display:none">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Está a punto de Eliminar sus datos. Está seguro?</p>
+</div>

@@ -1,0 +1,66 @@
+﻿@{
+    MVCdiario.Models.BDdiario db = new MVCdiario.Models.BDdiario();
+    var usuarios = db.usuarios.ToList();
+    var categorias = db.categorias.ToList();
+    
+    
+    ViewBag.Title = "NuevaNoticia";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new {enctype = "multipart/form-data" }))
+{
+
+		<article class="module width_full">
+
+			<div class="FormHead"><center><h3>NUEVA NOTICIA</h3></center></div>
+				<div class="module_content">
+
+         
+						<fieldset>
+							<label>Titulo</label>
+							<input type="text" name="titulo" required>
+						</fieldset>
+
+                    <fieldset>
+							<label>Contenido</label>
+							<textarea required name="contenido" rows="12"></textarea>
+						</fieldset>
+                        
+                    <fieldset>
+							<label>Imagen</label>
+							<input type="file" name="Imagen" required>
+						</fieldset>
+
+                    <fieldset>
+							<label>Categoria</label>
+							<select name="id_categoria">
+                                @foreach(var categoria in categorias){
+        <option value="@categoria.id_categoria">@categoria.nombre</option>
+                                }
+							</select>
+						</fieldset>
+
+                    <fieldset>
+							<label>Usuario</label>
+							<select name="id_usuario">
+                                @foreach(var usuario in usuarios){
+        <option value="@usuario.correo">@usuario.nombre @usuario.apellido</option>
+                                }
+							</select>
+						</fieldset>
+                        
+						<div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					
+					<input type="submit" value="Aceptar" class="alt_btn">
+					<a href="Ubicaciones"><input type="button" value="Cancelar"></a>
+                   
+				</div>
+                
+			</footer>
+
+		</article>
+}

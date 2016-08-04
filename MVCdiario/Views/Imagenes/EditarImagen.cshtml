@@ -1,0 +1,55 @@
+﻿@model MVCdiario.Models.imagenes
+@{
+    MVCdiario.Models.BDdiario db = new MVCdiario.Models.BDdiario();
+    var noticias = db.noticias.ToList();
+    ViewBag.Title = "EditarImagen";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new {enctype = "multipart/form-data" })){
+
+		<article class="module width_full">
+
+			<div class="FormHead"><center><h3>EDITAR IMAGEN</h3></center></div>
+				<div class="module_content">
+
+                    
+                    <input type="hidden" name="id_imagen" value="@Model.id_imagen" />
+                    <input type="hidden" name="nombre" value="@Model.nombre" />
+
+                    <fieldset>
+							<label>Imagen</label>
+							<input type="file" name="archivo" required />
+						</fieldset>
+
+                    <fieldset>
+							<label>Noticia</label>
+							<select name="id_noticia">
+                                @foreach (var noticia in noticias)
+                                {
+                                    if(noticia.id_noticia == Model.id_noticia){
+            <option selected value="@noticia.id_noticia">@noticia.titulo</option>
+                                }else{
+             <option value="@noticia.id_noticia">@noticia.titulo</option>                           
+                                    }
+                                }
+							</select>
+						</fieldset>
+
+                        
+                        
+						<div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					
+					<input type="submit" value="Aceptar" class="alt_btn">
+					<a href="Imagenes"><input type="button" value="Cancelar"></a>
+                   
+				</div>
+                
+			</footer>
+
+		</article>
+}
+

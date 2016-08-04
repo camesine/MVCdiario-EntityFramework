@@ -1,0 +1,35 @@
+﻿@model MVCdiario.Models.categorias
+@{
+    ViewBag.Title = "EditarCategoria";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+
+
+@using (Html.BeginForm()){
+
+		<article class="module width_full">
+
+			<div class="FormHead"><center><h3>EDITAR CATEGORIA</h3></center></div>
+				<div class="module_content">
+
+                    <input type="hidden" name="id_categoria" value="@Model.id_categoria" />
+						<fieldset>
+							<label>Nombre</label>
+							<input type="text" value="@Model.nombre" name="nombre" required>
+						</fieldset>
+                        
+                        
+						<div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					
+					<input type="submit" value="Aceptar" class="alt_btn">
+					<a href="Categorias"><input type="button" value="Cancelar"></a>
+                   
+				</div>
+                
+			</footer>
+
+		</article>
+}

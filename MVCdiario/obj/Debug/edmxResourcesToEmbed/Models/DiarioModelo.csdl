@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="diarioModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BDdiario" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="articulos" EntityType="diarioModel.articulos" />
+    <EntitySet Name="categorias" EntityType="diarioModel.categorias" />
+    <EntitySet Name="imagenes" EntityType="diarioModel.imagenes" />
+    <EntitySet Name="noticias" EntityType="diarioModel.noticias" />
+    <EntitySet Name="ubicaciones" EntityType="diarioModel.ubicaciones" />
+    <EntitySet Name="usuarios" EntityType="diarioModel.usuarios" />
+    <AssociationSet Name="FK_articulos_ubicacion" Association="diarioModel.FK_articulos_ubicacion">
+      <End Role="ubicaciones" EntitySet="ubicaciones" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_articulos_usuario" Association="diarioModel.FK_articulos_usuario">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_noticias_categorias" Association="diarioModel.FK_noticias_categorias">
+      <End Role="categorias" EntitySet="categorias" />
+      <End Role="noticias" EntitySet="noticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_imagenes_noticia" Association="diarioModel.FK_imagenes_noticia">
+      <End Role="noticias" EntitySet="noticias" />
+      <End Role="imagenes" EntitySet="imagenes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_noticias_usuarios" Association="diarioModel.FK_noticias_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="noticias" EntitySet="noticias" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="articulos">
+    <Key>
+      <PropertyRef Name="id_articulos" />
+    </Key>
+    <Property Name="id_articulos" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="contenido" Type="String" Nullable="false" MaxLength="3000" Unicode="true" FixedLength="false" />
+    <Property Name="id_ubicacion" Type="Int32" Nullable="false" />
+    <Property Name="id_usuario" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="ubicaciones" Relationship="diarioModel.FK_articulos_ubicacion" FromRole="articulos" ToRole="ubicaciones" />
+    <NavigationProperty Name="usuarios" Relationship="diarioModel.FK_articulos_usuario" FromRole="articulos" ToRole="usuarios" />
+  </EntityType>
+  <EntityType Name="categorias">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="noticias" Relationship="diarioModel.FK_noticias_categorias" FromRole="categorias" ToRole="noticias" />
+  </EntityType>
+  <EntityType Name="imagenes">
+    <Key>
+      <PropertyRef Name="id_imagen" />
+    </Key>
+    <Property Name="id_imagen" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="id_noticia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="noticias" Relationship="diarioModel.FK_imagenes_noticia" FromRole="imagenes" ToRole="noticias" />
+  </EntityType>
+  <EntityType Name="noticias">
+    <Key>
+      <PropertyRef Name="id_noticia" />
+    </Key>
+    <Property Name="id_noticia" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="contenido" Type="String" Nullable="false" MaxLength="3000" Unicode="true" FixedLength="false" />
+    <Property Name="id_categoria" Type="Int32" Nullable="false" />
+    <Property Name="id_usuario" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="categorias" Relationship="diarioModel.FK_noticias_categorias" FromRole="noticias" ToRole="categorias" />
+    <NavigationProperty Name="imagenes" Relationship="diarioModel.FK_imagenes_noticia" FromRole="noticias" ToRole="imagenes" />
+    <NavigationProperty Name="usuarios" Relationship="diarioModel.FK_noticias_usuarios" FromRole="noticias" ToRole="usuarios" />
+  </EntityType>
+  <EntityType Name="ubicaciones">
+    <Key>
+      <PropertyRef Name="id_ubicacion" />
+    </Key>
+    <Property Name="id_ubicacion" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="articulos" Relationship="diarioModel.FK_articulos_ubicacion" FromRole="ubicaciones" ToRole="articulos" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="correo" />
+    </Key>
+    <Property Name="correo" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="apellido" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="telefono" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="contrasena" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="articulos" Relationship="diarioModel.FK_articulos_usuario" FromRole="usuarios" ToRole="articulos" />
+    <NavigationProperty Name="noticias" Relationship="diarioModel.FK_noticias_usuarios" FromRole="usuarios" ToRole="noticias" />
+  </EntityType>
+  <Association Name="FK_articulos_ubicacion">
+    <End Role="ubicaciones" Type="diarioModel.ubicaciones" Multiplicity="1" />
+    <End Role="articulos" Type="diarioModel.articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ubicaciones">
+        <PropertyRef Name="id_ubicacion" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_ubicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_articulos_usuario">
+    <End Role="usuarios" Type="diarioModel.usuarios" Multiplicity="1" />
+    <End Role="articulos" Type="diarioModel.articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_noticias_categorias">
+    <End Role="categorias" Type="diarioModel.categorias" Multiplicity="1" />
+    <End Role="noticias" Type="diarioModel.noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorias">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="noticias">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_imagenes_noticia">
+    <End Role="noticias" Type="diarioModel.noticias" Multiplicity="1" />
+    <End Role="imagenes" Type="diarioModel.imagenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="noticias">
+        <PropertyRef Name="id_noticia" />
+      </Principal>
+      <Dependent Role="imagenes">
+        <PropertyRef Name="id_noticia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_noticias_usuarios">
+    <End Role="usuarios" Type="diarioModel.usuarios" Multiplicity="1" />
+    <End Role="noticias" Type="diarioModel.noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="noticias">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

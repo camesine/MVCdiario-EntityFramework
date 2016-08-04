@@ -1,0 +1,54 @@
+﻿@model MVCdiario.Models.usuarios
+@{
+   
+    ViewBag.Title = "NuevoUsuario";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+@using (Html.BeginForm()){
+
+		<article class="module width_full">
+
+			<div class="FormHead"><center><h3>NUEVO USUARIO</h3></center></div>
+				<div class="module_content">
+
+         
+						<fieldset>
+							<label>Correo</label>
+							<input type="email" name="correo" required>
+						</fieldset>
+                        
+                        
+						<fieldset>
+							<label>Nombre</label>
+							<input type="text" name="nombre" required>
+						</fieldset>
+                        
+                        <fieldset>
+							<label>Apellido</label>
+							<input type="text" name="apellido" required>
+						</fieldset>
+                        
+                        <fieldset>
+							<label>Telefono</label>
+							<input type="text" name="telefono" required>
+						</fieldset>
+                        
+                        <fieldset>
+							<label>Contraseña</label>
+							<input type="password" name="contrasena" required>
+						</fieldset>
+                        
+						<div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					
+					<input type="submit" value="Aceptar" class="alt_btn">
+					<a href="Usuarios"><input type="button" value="Cancelar"></a>
+                   
+				</div>
+                
+			</footer>
+
+		</article>
+}

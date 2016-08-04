@@ -1,0 +1,21 @@
+﻿@{
+    MVCdiario.Models.BDdiario db = new MVCdiario.Models.BDdiario();
+    
+    IEnumerable<MVCdiario.Models.articulos> articulo = from articulos in db.articulos
+                                      where articulos.titulo == "Nosotros"
+                                      select articulos;
+    ViewBag.Title = "Nosotros";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+   
+}
+@foreach(var fila in articulo){
+      <article class="art2" id="NoticiasLink">
+
+                 <div id="TituloLink">@fila.titulo</div>  
+                  
+                    <div style="text-align:center" class="TextoNoticiaLink" >@fila.contenido</div>
+          <img src="~/Imagenes/Logo.png"  style="margin-left:auto;margin-bottom:10px;height:200px" >
+                
+                </article>
+}

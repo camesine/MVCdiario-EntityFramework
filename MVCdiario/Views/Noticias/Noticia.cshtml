@@ -1,0 +1,32 @@
+﻿@model MVCdiario.Models.noticias
+@{
+    ViewBag.Title = "Noticia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    MVCdiario.Models.BDdiario db = new MVCdiario.Models.BDdiario();
+    var imagenes = db.imagenes.ToList();                     
+}
+                <article class="art2" id="NoticiasLink">
+
+                 <div id="TituloLink">@Model.categorias.nombre</div>
+
+                  
+                       
+                       <div id="TitularLink">
+                     @Model.titulo
+                       </div>
+                    
+                       
+
+                       <div class="TextoNoticiaLink" >
+                       @Model.contenido
+                       </div>
+                    @foreach(var img in imagenes){
+              if(img.id_noticia == Model.id_noticia){
+                  
+  <img src="~/Imagenes/@img.nombre" class="ImgNoticiaLink">
+                        
+          }
+          }      
+                   
+                        
+                </article>

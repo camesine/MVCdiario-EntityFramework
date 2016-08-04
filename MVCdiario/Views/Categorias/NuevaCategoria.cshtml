@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "NuevaCategoria";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+
+@using (Html.BeginForm()){
+
+		<article class="module width_full">
+
+			<div class="FormHead"><center><h3>NUEVA CATEGORIA</h3></center></div>
+				<div class="module_content">
+
+						<fieldset>
+							<label>Nombre</label>
+							<input type="text" name="nombre" required>
+						</fieldset>
+                        
+                        
+						<div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					
+					<input type="submit" value="Aceptar" class="alt_btn">
+					<a href="Categorias"><input type="button" value="Cancelar"></a>
+                   
+				</div>
+                
+			</footer>
+
+		</article>
+}

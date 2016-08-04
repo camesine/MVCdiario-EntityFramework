@@ -1,0 +1,76 @@
+﻿@model MVCdiario.Models.articulos
+@{
+    MVCdiario.Models.BDdiario db = new MVCdiario.Models.BDdiario();
+    var ubicaciones = db.ubicaciones.ToList();
+    var usuarios = db.usuarios.ToList();
+    
+    ViewBag.Title = "EditarArticulo";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+
+@using (Html.BeginForm()){
+
+		<article class="module width_full">
+
+			<div class="FormHead"><center><h3>EDITAR ARTICULO</h3></center></div>
+				<div class="module_content">
+           
+                    <input type="hidden" name="id_articulos" value="@Model.id_articulos" />
+         
+						<fieldset>
+							<label>Titulo</label>
+							<input type="text" value="@Model.titulo" name="titulo" required>
+						</fieldset>
+
+                    <fieldset>
+							<label>Contenido</label>
+							<textarea name="contenido" rows="12">@Model.contenido</textarea>
+						</fieldset>
+
+                    <fieldset>
+							<label>Ubicacion</label>
+							<select name="id_ubicacion">
+                                @foreach (var ubicacion in ubicaciones)
+                                {
+                                if(ubicacion.id_ubicacion == Model.id_ubicacion){    
+            <option selected value="@ubicacion.id_ubicacion">@ubicacion.nombre</option>
+                                }else{
+            <option value="@ubicacion.id_ubicacion">@ubicacion.nombre</option>
+                                }
+                                
+                                }
+							</select>
+						</fieldset>
+
+                    <fieldset>
+							<label>Usuario</label>
+							<select name="id_usuario">
+                                 @foreach(var usuario in usuarios){
+                                     if(usuario.correo == Model.id_usuario){
+            <option selected value="@usuario.correo">@usuario.nombre @usuario.apellido</option>
+                                 }else{
+            <option value="@usuario.correo">@usuario.nombre @usuario.apellido</option>
+                                     }
+                                 
+                                 }
+							</select>
+						</fieldset>
+
+
+
+                        
+                        
+						<div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					
+					<input type="submit" value="Aceptar" class="alt_btn">
+					<a href="Articulos"><input type="button" value="Cancelar"></a>
+                   
+				</div>
+                
+			</footer>
+
+		</article>
+}

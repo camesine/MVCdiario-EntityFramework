@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="diarioModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="diarioModelStoreContainer">
+    <EntitySet Name="articulos" EntityType="diarioModel.Store.articulos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="categorias" EntityType="diarioModel.Store.categorias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="imagenes" EntityType="diarioModel.Store.imagenes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="noticias" EntityType="diarioModel.Store.noticias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ubicaciones" EntityType="diarioModel.Store.ubicaciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="usuarios" EntityType="diarioModel.Store.usuarios" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_articulos_ubicacion" Association="diarioModel.Store.FK_articulos_ubicacion">
+      <End Role="ubicaciones" EntitySet="ubicaciones" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_articulos_usuario" Association="diarioModel.Store.FK_articulos_usuario">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_noticias_categoria" Association="diarioModel.Store.FK_noticias_categoria">
+      <End Role="categorias" EntitySet="categorias" />
+      <End Role="noticias" EntitySet="noticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_noticias_usuario" Association="diarioModel.Store.FK_noticias_usuario">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="noticias" EntitySet="noticias" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="articulos">
+    <Key>
+      <PropertyRef Name="id_articulos" />
+    </Key>
+    <Property Name="id_articulos" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="contenido" Type="nvarchar" Nullable="false" MaxLength="3000" />
+    <Property Name="id_ubicacion" Type="int" Nullable="false" />
+    <Property Name="id_usuario" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="categorias">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="imagenes">
+    <Key>
+      <PropertyRef Name="id_imagen" />
+    </Key>
+    <Property Name="id_imagen" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="id_noticia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="noticias">
+    <Key>
+      <PropertyRef Name="id_noticia" />
+    </Key>
+    <Property Name="id_noticia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="contenido" Type="nvarchar" Nullable="false" MaxLength="3000" />
+    <Property Name="id_categoria" Type="int" Nullable="false" />
+    <Property Name="id_usuario" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ubicaciones">
+    <Key>
+      <PropertyRef Name="id_ubicacion" />
+    </Key>
+    <Property Name="id_ubicacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="correo" />
+    </Key>
+    <Property Name="correo" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="apellido" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="telefono" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="contrasena" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_articulos_ubicacion">
+    <End Role="ubicaciones" Type="diarioModel.Store.ubicaciones" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="articulos" Type="diarioModel.Store.articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ubicaciones">
+        <PropertyRef Name="id_ubicacion" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_ubicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_articulos_usuario">
+    <End Role="usuarios" Type="diarioModel.Store.usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="articulos" Type="diarioModel.Store.articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_noticias_categoria">
+    <End Role="categorias" Type="diarioModel.Store.categorias" Multiplicity="1" />
+    <End Role="noticias" Type="diarioModel.Store.noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorias">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="noticias">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_noticias_usuario">
+    <End Role="usuarios" Type="diarioModel.Store.usuarios" Multiplicity="1" />
+    <End Role="noticias" Type="diarioModel.Store.noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="noticias">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

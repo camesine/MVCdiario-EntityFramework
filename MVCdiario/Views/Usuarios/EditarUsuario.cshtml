@@ -1,0 +1,54 @@
+﻿@model MVCdiario.Models.usuarios
+@{
+   
+    ViewBag.Title = "EditarUsuario";
+    Layout = "~/Views/Shared/Panel.cshtml";
+}
+@using (Html.BeginForm()){
+
+		<article class="module width_full">
+
+			<div class="FormHead"><center><h3>EDITAR USUARIO</h3></center></div>
+				<div class="module_content">
+
+         
+						<fieldset>
+							<label>Correo</label>
+							<input type="email" name="correo" readonly value="@Model.correo" required>
+						</fieldset>
+                        
+                        
+						<fieldset>
+							<label>Nombre</label>
+							<input type="text" name="nombre" value="@Model.nombre" required>
+						</fieldset>
+                        
+                        <fieldset>
+							<label>Apellido</label>
+							<input type="text" name="apellido" value="@Model.apellido" required>
+						</fieldset>
+                        
+                        <fieldset>
+							<label>Telefono</label>
+							<input type="text" name="telefono" value="@Model.telefono" required>
+						</fieldset>
+                        
+                        <fieldset>
+							<label>Contraseña</label>
+							<input type="password" name="contrasena" value="@Model.contrasena" required>
+						</fieldset>
+                        
+						<div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					
+					<input type="submit" value="Aceptar" class="alt_btn">
+					<a href="Usuarios"><input type="button" value="Cancelar"></a>
+                   
+				</div>
+                
+			</footer>
+
+		</article>
+}

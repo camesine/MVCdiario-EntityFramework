@@ -1,0 +1,30 @@
+﻿@{
+    
+    ViewBag.Title = "Acceder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using(Html.BeginForm()){
+    
+<article class="art2" id="ArtAcceder">
+
+                 <div id="TituloLink">@ViewBag.titulo</div>  
+                    
+                    <div id="FormAcceder">
+                    <table>
+                    <tr>
+                    <td class="LblForm">Usuario    </td> <td> <input type="text"  class="TxtForm" name="correo"></td>
+                    </tr>
+                        <tr>
+                    <td class="LblForm">Contraseña    </td> <td> <input type="password" class="TxtForm" name="contrasena"></td>
+                    </tr>
+                        <tr>
+                    <td></td> <td> <input type="submit" id="BtnEntrar" name="BtnEntrar" value="ENTRAR"></td>
+                    </tr>
+                    </table>
+                    </div>
+                 
+                    
+                
+                </article>
+                  <div style="clear: both" ></div>
+}

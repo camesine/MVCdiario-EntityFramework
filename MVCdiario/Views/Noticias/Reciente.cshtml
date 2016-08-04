@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MVCdiario.Models.noticias>
+@{
+    MVCdiario.Models.BDdiario db = new MVCdiario.Models.BDdiario();
+    var imagenes = db.imagenes.ToList();                      
+    ViewBag.Title = "Reciente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="TituloReciente">LO MAS RECIENTE</div>
+@foreach(var fila in Model){
+<div id="Noticia">
+             
+      <div class="div2" id="Imagen">
+          @foreach(var img in imagenes){
+              if(img.id_noticia == fila.id_noticia){
+                  
+  <img src="~/Imagenes/@img.nombre">
+         
+      
+          }
+          }      
+     </div>
+        
+                    <div class="div2" id="Info">
+                 <h2>   @Html.ActionLink(fila.titulo, "Noticia", "Noticias", new { id = fila.id_noticia }, new { id = "TitularNoticia" }) </h2>
+                        @if(@fila.contenido.Length > 500){
+                        <p id="ParrafoNoticia">@fila.contenido.Substring(0,500)....</p>
+                    }else{
+                    <p id="ParrafoNoticia">@fila.contenido</p>
+                    }
+                    </div>
+
+                </div>
+}
